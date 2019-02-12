@@ -1,29 +1,43 @@
 /*
- *
  *  Copyright (c) Microsoft. All rights reserved.
  *  Licensed under the MIT license. See LICENSE file in the project root for full license information.
- *
  */
 
-package tests.integration.com.microsoft.azure.sdk.iot.provisioning;
+package com.microsoft.azure.sdk.iot.androidthings.iothubservices.messaging;
 
-import com.microsoft.azure.sdk.iot.common.helpers.Tools;
-import com.microsoft.azure.sdk.iot.common.helpers.X509Cert;
-import com.microsoft.azure.sdk.iot.common.setup.ProvisioningCommon;
-import com.microsoft.azure.sdk.iot.common.tests.provisioning.ProvisioningTests;
+import com.microsoft.azure.sdk.iot.androidthings.BuildConfig;
+import com.microsoft.azure.sdk.iot.androidthings.helper.TestGroupA;
+import com.microsoft.azure.sdk.iot.common.helpers.ClientType;
+import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
+import com.microsoft.azure.sdk.iot.common.tests.iothubservices.telemetry.SendMessagesTests;
+import com.microsoft.azure.sdk.iot.deps.util.Base64;
+import com.microsoft.azure.sdk.iot.device.InternalClient;
+import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
+import com.microsoft.azure.sdk.iot.device.exceptions.ModuleClientException;
+import com.microsoft.azure.sdk.iot.service.BaseDevice;
+import com.microsoft.azure.sdk.iot.service.auth.AuthenticationType;
+import com.microsoft.azure.sdk.iot.service.exceptions.IotHubException;
 import com.microsoft.azure.sdk.iot.device.DeviceTwin.Pair;
-import com.microsoft.azure.sdk.iot.provisioning.device.ProvisioningDeviceClientTransportProtocol;
+
+import org.junit.AfterClass;
+import org.junit.Rule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
 import java.util.Collection;
 
+@TestGroupA
 @RunWith(Parameterized.class)
-public class ProvisioningClientJVMRunner extends ProvisioningTests
+public class ProvisioningClientThingsRunner extends ProvisioningTests
 {
-    public ProvisioningClientJVMRunner(ProvisioningDeviceClientTransportProtocol protocol, AttestationType attestationType)
+
+    @Rule
+    public Rerun count = new Rerun(3);
+
+    public ProvisioningClientThingsRunner(ProvisioningDeviceClientTransportProtocol protocol, AttestationType attestationType)
     {
         super(protocol, attestationType);
     }
