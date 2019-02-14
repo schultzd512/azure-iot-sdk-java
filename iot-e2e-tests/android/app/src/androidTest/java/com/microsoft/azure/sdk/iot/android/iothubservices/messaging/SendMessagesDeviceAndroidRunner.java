@@ -11,6 +11,7 @@ import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroupA;
 import com.microsoft.azure.sdk.iot.common.helpers.ClientType;
 import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
+import com.microsoft.azure.sdk.iot.common.helpers.X509Cert;
 import com.microsoft.azure.sdk.iot.common.tests.iothubservices.telemetry.SendMessagesTests;
 import com.microsoft.azure.sdk.iot.deps.util.Base64;
 import com.microsoft.azure.sdk.iot.device.InternalClient;
@@ -50,12 +51,10 @@ public class SendMessagesDeviceAndroidRunner extends SendMessagesTests
     //This function is run before even the @BeforeClass annotation, so it is used as the @BeforeClass method
     @Parameterized.Parameters(name = "{1}_{3}_{4}")
     public static Collection inputs() throws IOException, IotHubException, GeneralSecurityException, URISyntaxException, ModuleClientException, InterruptedException {
-        String privateKeyBase64Encoded = BuildConfig.IotHubPrivateKeyBase64;
-        String publicKeyCertBase64Encoded = BuildConfig.IotHubPublicCertBase64;
-        iotHubConnectionString = BuildConfig.IotHubConnectionString;
-        String x509Thumbprint = BuildConfig.IotHubThumbprint;
-        String privateKey = new String(Base64.decodeBase64Local(privateKeyBase64Encoded.getBytes()));
-        String publicKeyCert = new String(Base64.decodeBase64Local(publicKeyCertBase64Encoded.getBytes()));
+        X509Cert cert = new X509Cert(0,false, "TestLeaf", "TestRoot");
+        String privateKey =  cert.getPrivateKeyLeafPem();
+        String publicKeyCert = cert.getPublicCertLeafPem();
+        String x509Thumbprint = cert.getThumbPrintLeaf();
 
         Collection inputs = inputsCommon(ClientType.DEVICE_CLIENT, publicKeyCert, privateKey, x509Thumbprint);
 
