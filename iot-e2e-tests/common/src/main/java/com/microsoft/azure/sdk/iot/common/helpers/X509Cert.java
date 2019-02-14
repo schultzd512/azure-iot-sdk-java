@@ -8,7 +8,7 @@
 package com.microsoft.azure.sdk.iot.common.helpers;
 
 import com.microsoft.azure.sdk.iot.deps.util.Base64;
-import sun.security.tools.keytool.CertAndKeyGen;
+import com.microsoft.azure.sdk.iot.common.helpers.CertAndKeyGen;
 import sun.security.x509.*;
 
 import javax.xml.bind.DatatypeConverter;
