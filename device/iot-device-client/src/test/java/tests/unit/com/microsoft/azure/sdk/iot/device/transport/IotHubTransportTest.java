@@ -655,7 +655,7 @@ public class IotHubTransportTest
         new Verifications()
         {
             {
-                mockedIotHubTransportConnection.close(false);
+                mockedIotHubTransportConnection.close();
                 times = 1;
             }
         };
@@ -1560,7 +1560,7 @@ public class IotHubTransportTest
         {
             {
                 //open and close happen with no exception
-                mockedIotHubTransportConnection.close(true);
+                mockedIotHubTransportConnection.close();
             }
         };
 
@@ -1584,7 +1584,7 @@ public class IotHubTransportTest
         {
             {
                 //open and close happen with no exception
-                mockedIotHubTransportConnection.close(true);
+                mockedIotHubTransportConnection.close();
                 result = mockedTransportException;
 
                 Deencapsulation.invoke(transport, "checkForUnauthorizedException", mockedTransportException);

@@ -1995,6 +1995,6 @@ public class HttpsIotHubConnectionTest
     {
         HttpsIotHubConnection connection = new HttpsIotHubConnection(mockConfig);
         connection.open(null);
-        connection.close(false);
+        connection.close();
     }
 }

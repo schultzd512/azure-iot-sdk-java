@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * An HTTPS connection between a device and an IoT Hub. Contains functionality
@@ -61,6 +62,10 @@ public class HttpsIotHubConnection implements IotHubTransportConnection
             // Codes_SRS_HTTPSIOTHUBCONNECTION_11_001: [The constructor shall save the client configuration.]
             this.config = config;
         }
+    }
+
+    public void reset(ScheduledExecutorService scheduledExecutorService)
+    {
     }
 
     /**
@@ -292,7 +297,7 @@ public class HttpsIotHubConnection implements IotHubTransportConnection
     }
 
     @Override
-    public void close(boolean isReconnecting)
+    public void close()
     {
         //Dummy call
     }

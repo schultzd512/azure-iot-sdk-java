@@ -71,7 +71,7 @@ public final class AmqpsIotHubConnection extends BaseHandler implements IotHubTr
     private CountDownLatch openLatch;
     private CountDownLatch closeLatch;
 
-    public String connectionId = UUID.randomUUID().toString();
+    public String connectionId;
 
     private Reactor reactor;
 
@@ -91,6 +91,8 @@ public final class AmqpsIotHubConnection extends BaseHandler implements IotHubTr
      */
     public AmqpsIotHubConnection(DeviceClientConfig config, ScheduledExecutorService scheduledExecutorService) throws TransportException
     {
+        connectionId = UUID.randomUUID().toString();
+
         // Codes_SRS_AMQPSIOTHUBCONNECTION_15_001: [The constructor shall throw IllegalArgumentException if
         // any of the parameters of the configuration is null or empty.]
         if(config == null)
@@ -162,6 +164,21 @@ public final class AmqpsIotHubConnection extends BaseHandler implements IotHubTr
             // Codes_SRS_AMQPSIOTHUBCONNECTION_12_019: [The function shall call AmqpsSessionManager.addDeviceOperationSession with the given deviceClientConfig.]
             this.amqpsSessionManager.addDeviceOperationSession(deviceClientConfig);
         }
+    }
+
+    public void reset(ScheduledExecutorService scheduledExecutorService) throws TransportException
+    {
+        reconnectionScheduled = false;
+        connectionId = UUID.randomUUID().toString();
+
+        this.scheduledExecutorService = scheduledExecutorService;
+
+        this.closeLatch = new CountDownLatch(1);
+        this.openLatch = new CountDownLatch(1);
+        this.savedException = null;
+
+        this.state = IotHubConnectionStatus.DISCONNECTED;
+        this.amqpsSessionManager = new AmqpsSessionManager(this.deviceClientConfig, Executors.newScheduledThreadPool(2));
     }
 
     /**
@@ -311,7 +328,7 @@ public final class AmqpsIotHubConnection extends BaseHandler implements IotHubTr
      *
      * @throws TransportException if it failed closing the iothub connection.
      */
-    public void close(boolean isReconnecting) throws TransportException
+    public void close() throws TransportException
     {
         logger.LogDebug("Entered in method %s", logger.getMethodName());
 
@@ -379,17 +396,23 @@ public final class AmqpsIotHubConnection extends BaseHandler implements IotHubTr
         this.state = IotHubConnectionStatus.DISCONNECTED;
 
         // Codes_SRS_AMQPSIOTHUBCONNECTION_15_013: [The function shall closeNow the AmqpsSessionManager and the AMQP connection.]
-        this.amqpsSessionManager.closeNow();
+        if (this.amqpsSessionManager != null)
+        {
+            this.amqpsSessionManager.closeNow();
+            this.amqpsSessionManager = null;
+        }
 
         if (this.connection != null)
         {
             this.connection.close();
+            this.connection = null;
         }
 
         // Codes_SRS_AMQPSIOTHUBCONNECTION_34_014: [If this object's proton reactor is not null, this function shall stop the Proton reactor.]
         if (this.reactor != null)
         {
             this.reactor.stop();
+            this.reactor = null;
         }
 
         logger.LogInfo("Proton reactor has been stopped, method name is %s ", logger.getMethodName());

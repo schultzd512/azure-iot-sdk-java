@@ -862,7 +862,7 @@ public class AmqpsIotHubConnectionTest {
             }
         };
 
-        connection.close(false);
+        connection.close();
     }
 
     // Tests_SRS_AMQPSIOTHUBCONNECTION_15_012: [The function shall set the status of the AMQPS connection to DISCONNECTED.]
@@ -895,7 +895,7 @@ public class AmqpsIotHubConnectionTest {
         Deencapsulation.setField(connection, "executorService", mockExecutorService);
         Deencapsulation.setField(connection, "scheduledExecutorService", mockScheduledExecutorService);
 
-        connection.close(false);
+        connection.close();
 
         IotHubConnectionStatus actualState = Deencapsulation.getField(connection, "state");
         assertEquals(IotHubConnectionStatus.DISCONNECTED, actualState);
@@ -933,7 +933,7 @@ public class AmqpsIotHubConnectionTest {
         Deencapsulation.setField(connection, "connection", mockConnection);
         Deencapsulation.setField(connection, "executorService", mockExecutorService);
 
-        connection.close(false);
+        connection.close();
 
         IotHubConnectionStatus actualState = Deencapsulation.getField(connection, "state");
         assertEquals(IotHubConnectionStatus.DISCONNECTED, actualState);
