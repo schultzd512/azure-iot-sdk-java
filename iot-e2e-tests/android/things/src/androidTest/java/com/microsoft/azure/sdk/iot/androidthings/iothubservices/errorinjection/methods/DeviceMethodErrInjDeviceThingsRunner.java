@@ -36,8 +36,7 @@ public class DeviceMethodErrInjDeviceThingsRunner extends DeviceMethodErrInjTest
     static Collection<BaseDevice> identities;
     static ArrayList<DeviceTestManager> testManagers;
 
-    @Rule
-    public Rerun count = new Rerun(3);
+
 
     public DeviceMethodErrInjDeviceThingsRunner(DeviceTestManager deviceTestManager, IotHubClientProtocol protocol, AuthenticationType authenticationType, ClientType clientType, BaseDevice identity, String publicKeyCert, String privateKey, String x509Thumbprint)
     {

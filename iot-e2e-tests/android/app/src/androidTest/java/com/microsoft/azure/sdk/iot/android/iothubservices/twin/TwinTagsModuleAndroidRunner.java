@@ -26,8 +26,7 @@ public class TwinTagsModuleAndroidRunner extends TwinTagsTests
 {
     static Collection<BaseDevice> identities;
 
-    @Rule
-    public Rerun count = new Rerun(3);
+
 
     @Rule
     public ReportHelper reportHelper = Factory.getReportHelper();

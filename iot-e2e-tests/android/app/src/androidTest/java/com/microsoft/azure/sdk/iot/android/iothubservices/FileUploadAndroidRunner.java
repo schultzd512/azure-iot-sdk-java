@@ -19,8 +19,7 @@ import org.junit.Test;
 @TestGroupB
 public class FileUploadAndroidRunner extends FileUploadTests
 {
-    @Rule
-    public Rerun count = new Rerun(3);
+
 
     @Rule
     public ReportHelper reportHelper = Factory.getReportHelper();
