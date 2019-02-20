@@ -42,4 +42,11 @@ public class SendMessagesErrInjTests extends SendMessagesCommon
 
         System.out.println(clientType + " SendMessagesErrInjTests UUID: " + (identity instanceof Module ? ((Module) identity).getId() : identity.getDeviceId()));
     }
+
+    @Test
+    public void test()
+    {
+
+    }
+
 }

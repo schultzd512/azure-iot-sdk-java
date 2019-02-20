@@ -40,4 +40,11 @@ public class DeviceMethodTests extends DeviceMethodCommon
 
         System.out.println(clientType + " DeviceMethodTests UUID: " + (identity instanceof Module ? ((Module) identity).getId() : identity.getDeviceId()));
     }
+
+    @Test
+    public void test()
+    {
+
+    }
+
 }

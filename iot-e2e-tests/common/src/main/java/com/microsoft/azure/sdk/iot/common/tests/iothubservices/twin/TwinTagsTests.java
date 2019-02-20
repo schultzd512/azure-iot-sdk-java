@@ -36,4 +36,10 @@ public class TwinTagsTests extends DeviceTwinCommon
     {
         super(deviceId, moduleId, protocol, authenticationType, clientType, publicKeyCert, privateKey, x509Thumbprint);
     }
+    @Test
+    public void test()
+    {
+
+    }
+
 }

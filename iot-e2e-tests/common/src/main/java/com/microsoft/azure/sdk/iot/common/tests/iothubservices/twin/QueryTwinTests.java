@@ -38,5 +38,10 @@ public class QueryTwinTests extends DeviceTwinCommon
     {
         super(deviceId, moduleId, protocol, authenticationType, clientType, publicKeyCert, privateKey, x509Thumbprint);
     }
+    @Test
+    public void test()
+    {
+
+    }
 
 }

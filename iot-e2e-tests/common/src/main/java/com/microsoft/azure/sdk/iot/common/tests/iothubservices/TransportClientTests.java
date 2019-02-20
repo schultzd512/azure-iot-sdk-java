@@ -187,6 +187,13 @@ public class TransportClientTests extends IntegrationTest
         }
     }
 
+    @Test
+    public void test()
+    {
+
+    }
+
+
     private void verifyNotification(FileUploadNotification fileUploadNotification, FileUploadState fileUploadState, InternalClient client) throws IOException
     {
         Assert.assertTrue(buildExceptionMessage("Wrong file upload notification length", client), fileUploadNotification.getBlobSizeInBytes() == fileUploadState.fileLength);

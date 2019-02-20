@@ -39,4 +39,11 @@ public class ReceiveMessagesErrInjTests extends ReceiveMessagesCommon
 
         System.out.println(clientType + " ReceiveMessagesErrInjTests UUID: " + (identity instanceof Module ? ((Module) identity).getId() : identity.getDeviceId()));
     }
+
+    @Test
+    public void test()
+    {
+
+    }
+
 }

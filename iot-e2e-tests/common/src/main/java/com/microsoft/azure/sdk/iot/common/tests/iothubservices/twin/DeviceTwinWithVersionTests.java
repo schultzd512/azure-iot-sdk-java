@@ -243,4 +243,11 @@ public class DeviceTwinWithVersionTests extends IntegrationTest
         registryManager.removeDevice(testDevice.deviceId);
         testDevice = null;
     }
+
+    @Test
+    public void test()
+    {
+
+    }
+
 }

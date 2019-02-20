@@ -72,4 +72,11 @@ public class ServiceClientTests extends IntegrationTest
 
         return inputs;
     }
+
+    @Test
+    public void test()
+    {
+
+    }
+
 }

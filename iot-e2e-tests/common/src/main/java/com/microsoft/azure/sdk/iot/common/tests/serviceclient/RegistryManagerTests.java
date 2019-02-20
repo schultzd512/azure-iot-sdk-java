@@ -59,6 +59,13 @@ public class RegistryManagerTests extends IntegrationTest
         }
     }
 
+    @Test
+    public void test()
+    {
+
+    }
+
+
     private void deleteDeviceIfItExistsAlready(RegistryManager registryManager, String deviceId) throws IOException, InterruptedException
     {
         try
