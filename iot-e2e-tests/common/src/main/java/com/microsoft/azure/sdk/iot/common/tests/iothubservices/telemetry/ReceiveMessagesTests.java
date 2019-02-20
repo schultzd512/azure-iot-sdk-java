@@ -35,7 +35,7 @@ import static com.microsoft.azure.sdk.iot.service.auth.AuthenticationType.SELF_S
  * Test class containing all non error injection tests to be run on JVM and android pertaining to receiving messages on a device/module. Class needs to be extended
  * in order to run these tests as that extended class handles setting connection strings and certificate generation
  */
-public class ReceiveMessagesTests extends SendMessagesCommon
+public class ReceiveMessagesTests extends ReceiveMessagesCommon
 {
     public ReceiveMessagesTests(InternalClient client, IotHubClientProtocol protocol, BaseDevice identity, AuthenticationType authenticationType, ClientType clientType, String publicKeyCert, String privateKey, String x509Thumbprint)
     {
