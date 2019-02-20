@@ -14,7 +14,8 @@ import org.junit.Rule;
 
 public class TransportClientThingsRunner extends TransportClientTests
 {
-
+    @Rule
+    public Rerun count = new Rerun(3);
 
     @BeforeClass
     public static void setup() throws Exception

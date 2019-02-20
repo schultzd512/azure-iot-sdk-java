@@ -28,7 +28,8 @@ public class QueryTwinDeviceThingsRunner extends QueryTwinTests
 {
     static Collection<BaseDevice> identities;
 
-
+    @Rule
+    public Rerun count = new Rerun(3);
 
     public QueryTwinDeviceThingsRunner(String deviceId, String moduleId, IotHubClientProtocol protocol, AuthenticationType authenticationType, ClientType clientType, String publicKeyCert, String privateKey, String x509Thumbprint)
     {

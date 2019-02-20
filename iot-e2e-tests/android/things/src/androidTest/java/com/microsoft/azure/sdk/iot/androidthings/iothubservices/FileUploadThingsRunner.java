@@ -24,7 +24,8 @@ import java.security.cert.CertificateException;
 
 public class FileUploadThingsRunner extends FileUploadTests
 {
-
+    @Rule
+    public Rerun count = new Rerun(3);
 
     @BeforeClass
     public static void setup() throws Exception

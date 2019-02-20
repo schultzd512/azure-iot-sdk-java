@@ -31,7 +31,8 @@ public class DeviceMethodDeviceAndroidRunner extends DeviceMethodTests
     static Collection<BaseDevice> identities;
     static ArrayList<DeviceTestManager> testManagers;
 
-
+    @Rule
+    public Rerun count = new Rerun(3);
 
     @Rule
     public ReportHelper reportHelper = Factory.getReportHelper();

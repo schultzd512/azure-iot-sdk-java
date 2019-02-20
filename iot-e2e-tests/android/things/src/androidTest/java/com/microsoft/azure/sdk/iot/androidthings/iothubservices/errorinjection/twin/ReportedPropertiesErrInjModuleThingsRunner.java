@@ -28,7 +28,8 @@ public class ReportedPropertiesErrInjModuleThingsRunner extends ReportedProperti
 {
     static Collection<BaseDevice> identities;
 
-
+    @Rule
+    public Rerun count = new Rerun(3);
 
     public ReportedPropertiesErrInjModuleThingsRunner(String deviceId, String moduleId, IotHubClientProtocol protocol, AuthenticationType authenticationType, ClientType clientType, String publicKeyCert, String privateKey, String x509Thumbprint)
     {

@@ -20,7 +20,8 @@ import java.util.Collection;
 @RunWith(Parameterized.class)
 public class DeviceTwinWithVersionThingsRunner extends DeviceTwinWithVersionTests
 {
-
+    @Rule
+    public Rerun count = new Rerun(3);
 
     public DeviceTwinWithVersionThingsRunner(IotHubClientProtocol protocol)
     {

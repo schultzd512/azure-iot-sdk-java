@@ -15,7 +15,8 @@ import org.junit.Rule;
 
 public class TransportClientAndroidRunner extends TransportClientTests
 {
-
+    @Rule
+    public Rerun count = new Rerun(3);
 
     @Rule
     public ReportHelper reportHelper = Factory.getReportHelper();
