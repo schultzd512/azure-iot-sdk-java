@@ -64,10 +64,6 @@ public class HttpsIotHubConnection implements IotHubTransportConnection
         }
     }
 
-    public void reset(ScheduledExecutorService scheduledExecutorService)
-    {
-    }
-
     /**
      * Sends an event message.
      *
@@ -278,7 +274,7 @@ public class HttpsIotHubConnection implements IotHubTransportConnection
     }
 
     @Override
-    public void open(Queue<DeviceClientConfig> deviceClientConfigs)
+    public void open(Queue<DeviceClientConfig> deviceClientConfigs, ScheduledExecutorService scheduledExecutorService)
     {
 
     }

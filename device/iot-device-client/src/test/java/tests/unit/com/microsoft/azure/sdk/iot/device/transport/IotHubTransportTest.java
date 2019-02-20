@@ -765,6 +765,7 @@ public class IotHubTransportTest
         final Queue<DeviceClientConfig> configs = new ConcurrentLinkedQueue<>();
         configs.add(mockedConfig);
         Deencapsulation.setField(transport, "deviceClientConfigs", configs);
+        Deencapsulation.setField(transport, "iotHubTransportConnection", null);
         new Expectations(IotHubTransport.class)
         {
             {
@@ -780,13 +781,14 @@ public class IotHubTransportTest
         Deencapsulation.invoke(transport, "openConnection");
 
         //assert
+        final ScheduledExecutorService scheduledExecutorService = Deencapsulation.getField(transport, "scheduledExecutorService");
         new Verifications()
         {
             {
                 mockedHttpsIotHubConnection.setListener(transport);
                 times = 1;
 
-                mockedHttpsIotHubConnection.open(configs);
+                mockedHttpsIotHubConnection.open(configs, scheduledExecutorService);
                 times = 1;
 
                 Deencapsulation.invoke(transport, "updateStatus",
@@ -820,13 +822,14 @@ public class IotHubTransportTest
         Deencapsulation.invoke(transport, "openConnection");
 
         //assert
+        final ScheduledExecutorService scheduledExecutorService = Deencapsulation.getField(transport, "scheduledExecutorService");
         new Verifications()
         {
             {
                 mockedMqttIotHubConnection.setListener(transport);
                 times = 1;
 
-                mockedMqttIotHubConnection.open(configs);
+                mockedMqttIotHubConnection.open(configs, scheduledExecutorService);
                 times = 1;
             }
         };
@@ -856,13 +859,14 @@ public class IotHubTransportTest
         Deencapsulation.invoke(transport, "openConnection");
 
         //assert
+        final ScheduledExecutorService scheduledExecutorService = Deencapsulation.getField(transport, "scheduledExecutorService");
         new Verifications()
         {
             {
                 mockedMqttIotHubConnection.setListener(transport);
                 times = 1;
 
-                mockedMqttIotHubConnection.open(configs);
+                mockedMqttIotHubConnection.open(configs, scheduledExecutorService);
                 times = 1;
             }
         };
@@ -884,7 +888,7 @@ public class IotHubTransportTest
                 result = IotHubClientProtocol.AMQPS;
                 Executors.newScheduledThreadPool(1);
                 result = mockedScheduledExecutorService;
-                new AmqpsIotHubConnection(mockedConfig, mockedScheduledExecutorService);
+                new AmqpsIotHubConnection(mockedConfig);
                 result = mockedAmqpsIotHubConnection;
             }
         };
@@ -893,13 +897,14 @@ public class IotHubTransportTest
         Deencapsulation.invoke(transport, "openConnection");
 
         //assert
+        final ScheduledExecutorService scheduledExecutorService = Deencapsulation.getField(transport, "scheduledExecutorService");
         new Verifications()
         {
             {
                 mockedAmqpsIotHubConnection.setListener(transport);
                 times = 1;
 
-                mockedAmqpsIotHubConnection.open(configs);
+                mockedAmqpsIotHubConnection.open(configs, scheduledExecutorService);
                 times = 1;
             }
         };
@@ -921,7 +926,7 @@ public class IotHubTransportTest
                 result = IotHubClientProtocol.AMQPS_WS;
                 Executors.newScheduledThreadPool(1);
                 result = mockedScheduledExecutorService;
-                new AmqpsIotHubConnection(mockedConfig, mockedScheduledExecutorService);
+                new AmqpsIotHubConnection(mockedConfig);
                 result = mockedAmqpsIotHubConnection;
             }
         };
@@ -930,13 +935,14 @@ public class IotHubTransportTest
         Deencapsulation.invoke(transport, "openConnection");
 
         //assert
+        final ScheduledExecutorService scheduledExecutorService = Deencapsulation.getField(transport, "scheduledExecutorService");
         new Verifications()
         {
             {
                 mockedAmqpsIotHubConnection.setListener(transport);
                 times = 1;
 
-                mockedAmqpsIotHubConnection.open(configs);
+                mockedAmqpsIotHubConnection.open(configs, scheduledExecutorService);
                 times = 1;
             }
         };

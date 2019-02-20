@@ -42,7 +42,7 @@ public class MqttIotHubConnection implements IotHubTransportConnection, MqttMess
 
     private static final String API_VERSION = "?api-version=" + TransportUtils.IOTHUB_API_VERSION;
 
-    private String connectionId = UUID.randomUUID().toString();
+    private String connectionId;
 
     private IotHubListener listener;
 
@@ -93,11 +93,6 @@ public class MqttIotHubConnection implements IotHubTransportConnection, MqttMess
         }
     }
 
-    public void reset(ScheduledExecutorService scheduledExecutorService)
-    {
-        connectionId = UUID.randomUUID().toString();
-    }
-
     /**
      * Establishes a connection for the device and IoT Hub given in the client
      * configuration. If the connection is already open, the function shall do
@@ -105,8 +100,9 @@ public class MqttIotHubConnection implements IotHubTransportConnection, MqttMess
      *
      * @throws TransportException if a connection could not to be established.
      */
-    public void open(Queue<DeviceClientConfig> deviceClientConfigs) throws TransportException
+    public void open(Queue<DeviceClientConfig> deviceClientConfigs, ScheduledExecutorService scheduledExecutorService) throws TransportException
     {
+        connectionId = UUID.randomUUID().toString();
         if (deviceClientConfigs.size() > 1)
         {
             //Codes_SRS_MQTTIOTHUBCONNECTION_34_022: [If the list of device client configuration objects is larger than 1, this function shall throw an UnsupportedOperationException.]

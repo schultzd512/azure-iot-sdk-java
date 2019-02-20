@@ -23,17 +23,12 @@ import java.util.concurrent.ScheduledExecutorService;
 public interface IotHubTransportConnection
 {
     /**
-     * Reset the transport connection object
-     */
-    void reset(ScheduledExecutorService scheduledExecutorService) throws TransportException;
-
-    /**
      * Opens the transport connection object
      * @param deviceClientConfigs The list of configs to use. If more than 1 configs are in this list, multiplexing
      *                            will be used
      * @throws TransportException If any exceptions are encountered while opening the connection
      */
-    void open(Queue<DeviceClientConfig> deviceClientConfigs) throws TransportException;
+    void open(Queue<DeviceClientConfig> deviceClientConfigs, ScheduledExecutorService scheduledExecutorService) throws TransportException;
 
     /**
      * Sets a listener into the Transport Connection object. This listener updates the Transport layer of connection status
