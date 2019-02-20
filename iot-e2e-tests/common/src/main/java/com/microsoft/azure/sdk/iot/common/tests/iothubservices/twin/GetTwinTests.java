@@ -24,10 +24,4 @@ public class GetTwinTests extends DeviceTwinCommon
     {
         super(deviceId, moduleId, protocol, authenticationType, clientType, publicKeyCert, privateKey, x509Thumbprint);
     }
-
-    @Test
-    public void testGetDeviceTwin() throws IOException, InterruptedException, IotHubException
-    {
-        super.testGetDeviceTwin();
-    }
 }

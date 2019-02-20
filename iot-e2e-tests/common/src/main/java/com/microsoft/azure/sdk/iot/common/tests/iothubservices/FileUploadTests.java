@@ -15,10 +15,7 @@ import com.microsoft.azure.sdk.iot.service.*;
 import com.microsoft.azure.sdk.iot.service.auth.AuthenticationType;
 import com.microsoft.azure.sdk.iot.service.exceptions.IotHubException;
 import com.microsoft.azure.sdk.iot.service.exceptions.IotHubNotFoundException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -672,6 +669,7 @@ public class FileUploadTests extends IntegrationTest
         tearDownDeviceClient();
     }
 
+    @Ignore
     @Test (timeout = MAX_MILLISECS_TIMEOUT_KILL_TEST)
     public void uploadToBlobAsyncSingleFileOnHttpSelfSigned() throws URISyntaxException, IOException, InterruptedException, ExecutionException, TimeoutException
     {
@@ -731,6 +729,7 @@ public class FileUploadTests extends IntegrationTest
         tearDownDeviceClient();
     }
 
+    @Ignore
     @Test (timeout = MAX_MILLISECS_TIMEOUT_KILL_TEST)
     public void uploadToBlobAsyncAndTelemetryOnMQTTSelfSigned() throws URISyntaxException, IOException, InterruptedException, ExecutionException, TimeoutException
     {
@@ -791,6 +790,7 @@ public class FileUploadTests extends IntegrationTest
         tearDownDeviceClient();
     }
 
+    @Ignore
     @Test (timeout = MAX_MILLISECS_TIMEOUT_KILL_TEST)
     public void uploadToBlobAsyncSingleFileOnAMQPSelfSigned() throws URISyntaxException, IOException, InterruptedException, ExecutionException, TimeoutException
     {
