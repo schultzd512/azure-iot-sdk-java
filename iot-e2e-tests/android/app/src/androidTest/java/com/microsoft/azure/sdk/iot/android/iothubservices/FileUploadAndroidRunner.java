@@ -9,6 +9,7 @@ import com.microsoft.appcenter.espresso.Factory;
 import com.microsoft.appcenter.espresso.ReportHelper;
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroupB;
+import com.microsoft.azure.sdk.iot.android.helper.TestGroupC;
 import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
 import com.microsoft.azure.sdk.iot.common.tests.iothubservices.FileUploadTests;
 import org.junit.BeforeClass;
@@ -16,7 +17,7 @@ import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
-@TestGroupB
+@TestGroupC
 public class FileUploadAndroidRunner extends FileUploadTests
 {
     @Rule
