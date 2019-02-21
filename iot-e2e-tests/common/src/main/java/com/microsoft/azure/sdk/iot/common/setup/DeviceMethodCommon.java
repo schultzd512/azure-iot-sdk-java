@@ -140,7 +140,7 @@ public class DeviceMethodCommon extends IntegrationTest
                         DeviceClient deviceClientX509 = new DeviceClient(registryManager.getDeviceConnectionString(deviceX509), protocol, publicCertificate, false, privateKey, false);
                         DeviceTestManager deviceClientX509TestManager = new DeviceTestManager(deviceClientX509);
                         deviceTestManagers.add(deviceClientX509TestManager);
-                        inputs.add(makeSubArray(deviceClientX509TestManager, protocol, SELF_SIGNED, ClientType.DEVICE_CLIENT, deviceX509, publicCertificate, privateKey, thumbprint));
+                        //inputs.add(makeSubArray(deviceClientX509TestManager, protocol, SELF_SIGNED, ClientType.DEVICE_CLIENT, deviceX509, publicCertificate, privateKey, thumbprint));
                     }
                     else if (clientType == ClientType.MODULE_CLIENT)
                     {
@@ -148,7 +148,7 @@ public class DeviceMethodCommon extends IntegrationTest
                         ModuleClient moduleClientX509 = new ModuleClient(DeviceConnectionString.get(iotHubConnectionString, deviceX509, moduleX509), protocol, publicCertificate, false, privateKey, false);
                         DeviceTestManager moduleClientX509TestManager = new DeviceTestManager(moduleClientX509);
                         deviceTestManagers.add(moduleClientX509TestManager);
-                        inputs.add(makeSubArray(moduleClientX509TestManager, protocol, SELF_SIGNED, ClientType.MODULE_CLIENT, moduleX509, publicCertificate, privateKey, thumbprint));
+                        //inputs.add(makeSubArray(moduleClientX509TestManager, protocol, SELF_SIGNED, ClientType.MODULE_CLIENT, moduleX509, publicCertificate, privateKey, thumbprint));
                     }
                 }
             }

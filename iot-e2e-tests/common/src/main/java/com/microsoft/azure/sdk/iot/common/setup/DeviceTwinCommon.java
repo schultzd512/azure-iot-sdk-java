@@ -362,8 +362,8 @@ public class DeviceTwinCommon extends IntegrationTest
                                     {deviceIdMqttWs,  null, MQTT_WS, SAS, ClientType.DEVICE_CLIENT, publicCertificate, privateKey, thumbprint},
 
                                     //x509, device client
-                                    {deviceIdAmqpsX509, null, AMQPS, SELF_SIGNED, ClientType.DEVICE_CLIENT, publicCertificate, privateKey, thumbprint},
-                                    {deviceIdMqttX509, null, MQTT, SELF_SIGNED, ClientType.DEVICE_CLIENT, publicCertificate, privateKey, thumbprint},
+                                    //{deviceIdAmqpsX509, null, AMQPS, SELF_SIGNED, ClientType.DEVICE_CLIENT, publicCertificate, privateKey, thumbprint},
+                                    //{deviceIdMqttX509, null, MQTT, SELF_SIGNED, ClientType.DEVICE_CLIENT, publicCertificate, privateKey, thumbprint},
                             }
             );
         }
