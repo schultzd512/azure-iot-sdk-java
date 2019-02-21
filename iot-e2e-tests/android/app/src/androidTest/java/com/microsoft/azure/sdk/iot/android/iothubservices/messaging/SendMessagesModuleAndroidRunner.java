@@ -9,7 +9,6 @@ import com.microsoft.appcenter.espresso.Factory;
 import com.microsoft.appcenter.espresso.ReportHelper;
 import com.microsoft.azure.sdk.iot.android.BuildConfig;
 import com.microsoft.azure.sdk.iot.android.helper.TestGroupA;
-import com.microsoft.azure.sdk.iot.android.helper.TestGroupB;
 import com.microsoft.azure.sdk.iot.common.helpers.ClientType;
 import com.microsoft.azure.sdk.iot.common.helpers.Rerun;
 import com.microsoft.azure.sdk.iot.common.tests.iothubservices.telemetry.SendMessagesTests;
@@ -24,7 +23,7 @@ import org.junit.runners.Parameterized;
 
 import java.util.Collection;
 
-@TestGroupB
+@TestGroupA
 @RunWith(Parameterized.class)
 public class SendMessagesModuleAndroidRunner extends SendMessagesTests
 {
