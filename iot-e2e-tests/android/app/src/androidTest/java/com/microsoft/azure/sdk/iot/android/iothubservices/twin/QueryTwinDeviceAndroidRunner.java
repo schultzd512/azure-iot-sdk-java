@@ -22,7 +22,6 @@ import org.junit.runners.Parameterized;
 
 import java.util.Collection;
 
-@TestGroupC
 @RunWith(Parameterized.class)
 public class QueryTwinDeviceAndroidRunner extends QueryTwinTests
 {
