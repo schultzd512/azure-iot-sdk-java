@@ -24,7 +24,6 @@ import org.junit.runners.Parameterized;
 
 import java.util.Collection;
 
-@TestGroupB
 @RunWith(Parameterized.class)
 public class SendMessagesErrInjModuleAndroidRunner extends SendMessagesErrInjTests
 {
